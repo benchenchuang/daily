@@ -1,6 +1,6 @@
 # daily
 
-> my daily vue demo
+> my daily vue demo https://benchenchuang.github.io/daily_view/#/
 
 ## Build Setup
 
