@@ -3,8 +3,8 @@
 
     <daily-header :title="title"></daily-header>
     <!--侧边栏-->
-    <div class="slider">
-      <router-link tag="div" @click.native="hideBar" :to="{name:'user',params:{id:123}}" class="user-signin">
+    <div class="slider" id='slider'>
+      <router-link tag="div" @click.native="hideBar" :to="{name:'user',params:{id:0}}" class="user-signin">
         <div class="user-avatar"><img src="../image/avatar.jpg"> </div>
         <span class="user-name">常州吴彦祖</span>
       </router-link>
@@ -47,6 +47,9 @@
     mounted(){
         this.$nextTick(function () {
             this.getThemes();
+        });
+        $("#slider").on('touchmove',function(e){
+          $('.slide-slide').scrollTop(0);
         })
     },
     components:{
@@ -80,10 +83,10 @@
             return '动漫日报';
           case 8:
             return '体育日报';
-          case 'undefined':
-            return '首页';
-          default:
+          case 0:
             return '我的';
+          default:
+            return '首页';
         }
       }
     },
@@ -99,8 +102,9 @@
         })
       },
       hideBar:function () {
-        window.document.body.className = ''
+        window.document.body.className = '';
       }
+            
 
     }
   }

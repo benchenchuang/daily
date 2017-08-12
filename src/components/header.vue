@@ -20,9 +20,17 @@ export default {
     return{
     }
   },
+  watch:{
+    $route(){
+      window.document.title=this.title
+    }
+  },
+  mounted(){
+    window.document.title=this.title;
+  },
   methods:{
     showBar () {
-      window.document.body.className = 'slide-show'
+      window.document.body.className = 'slide-show';
     }
   }
 }

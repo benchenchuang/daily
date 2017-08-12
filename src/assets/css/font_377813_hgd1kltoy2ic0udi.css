@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <title>知乎日报</title>
-    <style>
-    
+
 @font-face {font-family: "iconfont";
   src: url('//at.alicdn.com/t/font_377813_hgd1kltoy2ic0udi.eot?t=1502342918993'); /* IE9*/
   src: url('//at.alicdn.com/t/font_377813_hgd1kltoy2ic0udi.eot?t=1502342918993#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -51,12 +44,3 @@
 .icon-weixin:before { content: "\e673"; }
 
 .icon-pengyouquan:before { content: "\e600"; }
-
-    </style>
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-
-</html>

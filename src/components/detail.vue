@@ -45,6 +45,7 @@
       this.$nextTick(function(){
         this.getDetail();
         this.getExtra();
+        window.document.title='文章详情'
       })
     },
     components:{
@@ -208,7 +209,7 @@
     font-weight: 700;
     color: #fff;
     text-shadow: 2px 2px 2px rgba(0,0,0,.2);
-    z-index: 9;
+    z-index:9;
   }
   .list-footer{
     position: fixed;
@@ -221,6 +222,7 @@
     font-size: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,.1);
     background: #00a2ea;
+    z-index:10;
   }
   .list-footer .go_back{
       position:relative;

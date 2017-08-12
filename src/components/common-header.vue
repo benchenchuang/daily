@@ -13,6 +13,9 @@
       return {
       }
     },
+    mounted(){
+        window.document.title='评论'
+    },
     methods: {
       goBack() {
         window.history.back()
