@@ -1,0 +1,57 @@
+/*浏览器重置*/
+body, h1, h2, h3, h4, h5, h6, hr, p,
+blockquote,
+dl, dt, dd, ul, ol, li,
+pre,
+form, fieldset, legend, button, input,textarea,
+th, td,
+img{
+  border:none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust: 100%!important;
+}
+body{
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body,button, input, select, textarea {
+  font:0.24rem/1.5 "Microsoft Yahei","Helvetica",Helvetica,Arial,"Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight:normal;
+}
+:focus {
+  outline: 0;
+}
+img {
+  width: 100%;
+  border:none;
+  vertical-align:top;
+}
+em,i{
+  font-style: normal
+}
+ul,ol{
+  list-style: none;
+}
+a{
+  color: #666;
+  text-decoration: none;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #c5c5c5;
+}
+table{border-collapse:collapse;}
+textarea{ resize:none; overflow:auto;}
+a,button,input,textarea,select{
+  background: none;
+  -webkit-tap-highlight-color:rgba(255,0,0,0);
+  outline:none;
+  -webkit-appearance:none;
+}
