@@ -1,6 +1,15 @@
 # daily
 
 > my daily vue demo
+视图版本https://benchenchuang.github.io/daily_view/#/
+<br/><br/>
+
+知乎日报提供的api不能跨域，虽然proxyTable可以解决开发时候的跨域问题，但是我没搞定发布时候怎么解决跨域问题，所以使用了别人的二次开发api 
+
+https://segmentfault.com/a/1190000009242864 
+
+
+
 
 ## Build Setup
 
