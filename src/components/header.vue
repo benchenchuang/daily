@@ -1,7 +1,7 @@
 <template>
   <div class="list-header">
     <div class="icon_more" @click="showBar">
-      <i class="iconfont icon-back"></i>
+      <i class="iconfont icon-more"></i>
     </div>
     <div class="header-title">
       <p>{{title}}</p>
