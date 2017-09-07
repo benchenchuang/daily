@@ -4,27 +4,28 @@
     <daily-header :title="title"></daily-header>
     <!--侧边栏-->
     <div class="slider" id='slider'>
-      <router-link tag="div" @click.native="hideBar" :to="{name:'user',params:{id:0}}" class="user-signin">
-        <div class="user-avatar"><img src="../image/avatar.jpg"> </div>
-        <span class="user-name">常州吴彦祖</span>
-      </router-link>
-      <div class="my-icon">
-        <ul>
-          <li><i class="iconfont icon-shoucang"></i><p>收藏</p></li>
-          <li><i class="iconfont icon-message"></i><p>消息</p></li>
-          <li><i class="iconfont icon-shezhi"></i><p>设置</p></li>
-        </ul>
-      </div>
+        <router-link tag="div" @click.native="hideBar" :to="{name:'user',params:{id:0}}" class="user-signin">
+          <div class="user-avatar"><img src="../image/avatar.jpg"> </div>
+          <span class="user-name">常州吴彦祖</span>
+        </router-link>
+        <div class="my-icon">
+          <ul>
+            <li><i class="iconfont icon-shoucang"></i><p>收藏</p></li>
+            <li><i class="iconfont icon-message"></i><p>消息</p></li>
+            <li><i class="iconfont icon-shezhi"></i><p>设置</p></li>
+          </ul>
+        </div>
 
-      <div class="daily-item">
-        <ul>
-          <router-link tag="li" @click.native="hideBar" :to="{name:'listContent'}"><i class="iconfont icon-home home-icon"></i>首页 <span class="iconfont icon-right"></span></router-link>
-          <router-link tag="li" @click.native="hideBar" v-for="theme in themes" :key="theme.id" :to="{name: 'theme', params: { id: theme.id }}">{{theme.name}}<span class="iconfont icon-add"></span></router-link>
-        </ul>
+        <div class="daily-item swiper-container1">
+          <ul class="swiper-wrapper">
+            <router-link class="swiper-slide" tag="li" @click.native="hideBar" :to="{name:'listContent'}"><i class="iconfont icon-home home-icon"></i>首页 <span class="iconfont icon-right"></span></router-link>
+            <router-link class="swiper-slide" tag="li" @click.native="hideBar" v-for="theme in themes" :key="theme.id" :to="{name: 'theme', params: { id: theme.id }}">{{theme.name}}<span class="iconfont icon-add"></span></router-link>
+          </ul>
+        </div>
+
       </div>
       <!--遮罩-->
       <div class="side-mask" @click="hideBar()"></div>
-    </div>
 
     <div class="slide-slide">
       <router-view></router-view>
@@ -47,10 +48,8 @@
     mounted(){
         this.$nextTick(function () {
             this.getThemes();
+            this.slideNav();
         });
-        $("#slider").on('touchmove',function(e){
-          $('.slide-slide').scrollTop(0);
-        })
     },
     components:{
       dailyHeader
@@ -103,15 +102,37 @@
       },
       hideBar:function () {
         window.document.body.className = '';
+      },
+      slideNav:function(){
+        new window.Swiper('.swiper-container1', {
+            direction : 'vertical',
+            freeMode : true,
+            // height:'46px',
+            observer: true,
+            slidesPerView: 9,
+            freeModeMomentumVelocityRatio : 3
+        })
       }
-            
-
     }
   }
 </script>
 
-<style>
-
+<style scoped>
+  body{
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+  }
+  .swiper-container1{
+    width: 100%;
+    height:73vh;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
   .slide-slide{
     position: absolute;
     width:100%;
@@ -196,9 +217,10 @@
   }
   .daily-item ul li{
     width:100%;
+    display: block;
     padding:2px 20px ;
-    height:46px;
-    line-height:46px;
+    /* height:46px; */
+    line-height:8.3vh;
     font-size: 14px;
     overflow: hidden;
     box-sizing: border-box;
