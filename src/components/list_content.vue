@@ -26,23 +26,23 @@
           var month=value.substring(4,6);
           var days=value.substring(6,8);
           var getDays=year+'年'+month+'月'+days+'日';
-          var newDate=new Date('"'+year+'-'+month+'-'+days+'"').getDay();
-          switch (newDate){
-            case 0:
-              return getDays+' 星期日';
-            case 1:
-              return getDays+' 星期一';
-            case 2:
-              return getDays+' 星期二';
-            case 3:
-              return getDays+' 星期三';
-            case 4:
-              return getDays+' 星期四';
-            case 5:
-              return getDays+' 星期五';
-            case 6:
-              return getDays+' 星期六';
-          }
+          // var newDate=new Date('"'+year+'-'+month+'-'+days+'"').getDay();
+          // switch (newDate){
+          //   case 0:
+          //     return getDays+' 星期日';
+          //   case 1:
+          //     return getDays+' 星期一';
+          //   case 2:
+          //     return getDays+' 星期二';
+          //   case 3:
+          //     return getDays+' 星期三';
+          //   case 4:
+          //     return getDays+' 星期四';
+          //   case 5:
+          //     return getDays+' 星期五';
+          //   case 6:
+          //     return getDays+' 星期六';
+          // }
   })
 
 
@@ -55,7 +55,8 @@
       return {
         top_stories:[],
         allStories: [],
-        date:''
+        date:'',
+        newDate:''
       }
     },
     watch:{
@@ -74,24 +75,32 @@
           var month=value.substring(4,6);
           var days=value.substring(6,8);
           var getDays=year+'年'+month+'月'+days+'日';
-          return getDays;
-          // var newDate=new Date('"'+year+'-'+month+'-'+days+'"').getDay();
-        //   switch (newDate){
-        //     case 0:
-        //       return getDays+' 星期日';
-        //     case 1:
-        //       return getDays+' 星期一';
-        //     case 2:
-        //       return getDays+' 星期二';
-        //     case 3:
-        //       return getDays+' 星期三';
-        //     case 4:
-        //       return getDays+' 星期四';
-        //     case 5:
-        //       return getDays+' 星期五';
-        //     case 6:
-        //       return getDays+' 星期六';
-        //   }
+          
+          var thisDate=new Date('"'+year+'/'+month+'/'+days+'"').getDay();
+          var thisWeek='';
+          switch (thisDate){
+            case 0:
+              thisWeek=' 星期日';
+              break;
+            case 1:
+              thisWeek=' 星期一';
+              break;
+            case 2:
+              thisWeek=' 星期二';
+              break;
+            case 3:
+              thisWeek=' 星期三';
+              break;
+            case 4:
+              thisWeek=' 星期四';
+              break;
+            case 5:
+              thisWeek=' 星期五';
+              break;
+            case 6:
+              thisWeek=' 星期六';
+          }
+          return getDays+thisWeek;
         }
     },
     methods: {
@@ -104,23 +113,27 @@
         }).then(function(response) {
           
           self.top_stories=response.data.STORIES.top_stories;
-          self.date=response.data.STORIES.date;
+          self.newDate=self.date=response.data.STORIES.date;
           response.data.STORIES.date='';
           self.allStories.push(response.data.STORIES);
         })
       },
       getMore(){
         var self=this;
-        setTimeout(function () {
-          axios.get('https://zhihu-daily.leanapp.cn/api/v1/before-stories/'+self.date, {}, {
+        axios.get('https://zhihu-daily.leanapp.cn/api/v1/before-stories/'+self.date, {}, {
             headers: {
               "Content-Type": "application/json;charset=utf-8"
             }
           }).then(function(response) {
-            self.date=response.data.STORIES.date;
-            self.allStories.push(response.data.STORIES);
+            self.newDate=response.data.STORIES.date;
+            if(self.date!=self.newDate){
+              self.date=response.data.STORIES.date;
+              self.allStories.push(response.data.STORIES);
+            }else{
+              return;
+            }
+            
           })
-        },10)
       },
       replace (str) {
         return str.replace(/http\w{0,1}:\/\/p/g, 'https://images.weserv.nl/?url=p')
