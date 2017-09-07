@@ -4,7 +4,7 @@
     <!--列表-->
     <div class="list-box" v-for="(item,index) in allStories">
       <ul>
-        <h2 class="title" v-if="item.date">{{item.date | getDayTime}}</h2>
+        <h2 class="title" v-if="item.date">{{item.date | getDayFun}}</h2>
         <list-comp v-for="subItem in item.stories" :item="subItem" :key="subItem.id"></list-comp>
       </ul>
     </div>
@@ -74,23 +74,24 @@
           var month=value.substring(4,6);
           var days=value.substring(6,8);
           var getDays=year+'年'+month+'月'+days+'日';
-          var newDate=new Date('"'+year+'-'+month+'-'+days+'"').getDay();
-          switch (newDate){
-            case 0:
-              return getDays+' 星期日';
-            case 1:
-              return getDays+' 星期一';
-            case 2:
-              return getDays+' 星期二';
-            case 3:
-              return getDays+' 星期三';
-            case 4:
-              return getDays+' 星期四';
-            case 5:
-              return getDays+' 星期五';
-            case 6:
-              return getDays+' 星期六';
-          }
+          return getDays;
+          // var newDate=new Date('"'+year+'-'+month+'-'+days+'"').getDay();
+        //   switch (newDate){
+        //     case 0:
+        //       return getDays+' 星期日';
+        //     case 1:
+        //       return getDays+' 星期一';
+        //     case 2:
+        //       return getDays+' 星期二';
+        //     case 3:
+        //       return getDays+' 星期三';
+        //     case 4:
+        //       return getDays+' 星期四';
+        //     case 5:
+        //       return getDays+' 星期五';
+        //     case 6:
+        //       return getDays+' 星期六';
+        //   }
         }
     },
     methods: {
