@@ -75,8 +75,7 @@
           var month=value.substring(4,6);
           var days=value.substring(6,8);
           var getDays=year+'年'+month+'月'+days+'日';
-          
-          var thisDate=new Date('"'+year+'/'+month+'/'+days+'"').getDay();
+          var thisDate=new Date(year+'-'+month+'-'+days).getDay();
           var thisWeek='';
           switch (thisDate){
             case 0:
